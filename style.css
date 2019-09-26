@@ -79,8 +79,9 @@
     float: left;
     margin: 0 25px;
     cursor: pointer;
+    transition: background .3s ease-in-out;
   }
-  
+
   .select-screen .main .character.charmander{
     background: #FA7A47;
   }
@@ -89,6 +90,9 @@
   }
   .select-screen .main .character.squirtle{
     background: #64B2FA;
+  }
+  .select-screen .main .character:hover{
+    background: purple;
   }
   
   /* BATTLE SCREEN ============================================================*/

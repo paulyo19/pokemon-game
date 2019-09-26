@@ -6,7 +6,7 @@ console.log(gameState)
 
 var pokemonsEl = document.querySelector('.select-screen').querySelectorAll('.character');
 console.log(pokemonsEl);
-
+var battleScreenEl = document.getElementById('battle-screen')
 let i = 0;
 
 while (i < pokemonsEl.length){
@@ -15,6 +15,7 @@ while (i < pokemonsEl.length){
     gameState.userPokemon = pokemonName
 
     cpuPick()
+    battleScreenEl.classList.toggle('active')
     console.log(gameState)
   }
   i++
