@@ -1,4 +1,5 @@
-
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import "reset.css";
 
 /*font-family: 'Bangers', cursive;*/
 /*font-family: 'Cabin Sketch', cursive;*/
@@ -6,6 +7,12 @@
 /*font-family: 'Press Start 2P', cursive;*/
 *{
     box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
   }
   /* SELECT SCREEN ============================================================*/
   .header{
@@ -71,6 +78,7 @@
     border: 3px solid #000;
     float: left;
     margin: 0 25px;
+    cursor: pointer;
   }
   
   .select-screen .main .character.charmander{
@@ -91,9 +99,16 @@
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
     width: 100%;
-      padding: 100px 50px;
-      overflow: auto;
-        height: 100vh;
+    padding: 100px 50px;
+    overflow: auto;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    transition: top .5s ease-in-out;
+  }
+
+  #battle-screen.active{
+    top: -100vh
   }
   
   #battle-screen .fight-btn{
@@ -330,9 +345,3 @@
   #battle-screen .cpu img{
     height: 200px;
   }
-  
-  
-  
-  
-  
-  
