@@ -5,7 +5,7 @@ var pokemonDB = [
         type: 'fire',
         hp:39,
         attack: 52,
-        defencee: 43,
+        defence: 43,
         level: 1,
         img: 'http://www.smogon.com/dex/media/sprites/xy/charmander.gif'
       },
@@ -65,16 +65,20 @@ while (i < pokemonsEl.length){
     battleScreenEl.classList.toggle('active')
     
 // SELECT DATA FROM CURRENT USER POKEMON
-    var currentPokemon = pokemonDB.filter(function(pokemon){
+    gameState.currentPokemon = pokemonDB.filter(function(pokemon){
       return pokemon.name == gameState.userPokemon
     })
-    player1Img[0].src = currentPokemon[0].img
+    player1Img[0].src = gameState.currentPokemon[0].img
 
 // SELECT DATA FROM CURRENT USER POKEMON 
-    var currentRivalPokemon = pokemonDB.filter(function(pokemon){
+    gameState.currentRivalPokemon = pokemonDB.filter(function(pokemon){
       return pokemon.name == gameState.rivalPokemon
     })
-    player2Img[0].src = currentRivalPokemon[0].img
+    player2Img[0].src = gameState.currentRivalPokemon[0].img
+
+   
+    gameState.currentPokemon[0].health = calculateInitialHealth(gameState.currentPokemon)
+    console.log(gameState)
   // USER CHOOSE ATTACK
 
 
@@ -103,9 +107,44 @@ while (a < attackBtnsEl.length) {
   attackBtnsEl[a].onclick = function(){
     var attackName = this.dataset.attack
     gameState.currentUserAttack = attackName
-    console.log(gameState.currentUserAttack)
+    
+    play(attackName, cpuAttack())
   }
   a++
+}
+
+var cpuAttack = function () {
+  var attacks = ['rock', 'paper', 'scissors']
+
+  return attacks[randomNumber(0,3)]
+}
+
+var calculateInitialHealth = function (user){
+  
+  return ((0.20 * Math.sqrt(user[0].level)) * user[0].defence) * user[0].hp
+}
+
+var play = function(userAttack, cpuAttack){
+  switch (userAttack) {
+    case 'rock':
+      if (cpuAttack == 'paper'){ 
+      console.log('paper beats rock')
+      }
+
+      if (cpuAttack == 'scissors'){
+        console.log('rock beats scissors')
+      }
+      if (cpuAttack == 'rock'){
+        console.log('its a draw')
+      }
+      break;
+    case 'paper':
+      console.log(userAttack)
+      break;
+    case 'scissors':
+        console.log(userAttack)
+    break;
+  }
 }
 
 var randomNumber = function randomNumber(min, max) {
