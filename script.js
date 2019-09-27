@@ -1,3 +1,4 @@
+// DATABASE
 var pokemonDB = [
       {
         name: 'charmander',
@@ -29,43 +30,57 @@ var pokemonDB = [
       
     ]
 
+// STATE
 var gameState = {
   userPokemon: '',
   rivalPokemon: '' 
 }
 console.log(gameState)
 
+// ELEMENTS
 var pokemonsEl = document.querySelector('.select-screen').querySelectorAll('.character');
 console.log(pokemonsEl);
 var battleScreenEl = document.getElementById('battle-screen')
 let i = 0;
 
+// THIS IS THE INITIAL LOOP
 while (i < pokemonsEl.length){
+ // .ADD FUNCTION TO ALL CHARACTERS ON SCREEN SELECT
   pokemonsEl[i].onclick = function(){
+// CURRENT SELECTED POKEMONS
     var pokemonName = this.dataset.pokemon
+// ELEMENTS FOR IMAGES ON BATLE SCREEN
     var player1Img = document.querySelector('.player1').getElementsByTagName('img')
-
+    var player2Img = document.querySelector('.player2').getElementsByTagName('img')
+// WE SAVE THE CURRENT POKEMON 
     gameState.userPokemon = pokemonName
 
+// CPU PICKS A POKEMON
     cpuPick()
+// CHANGE SCREEN TO BATTLE SCREEN
     battleScreenEl.classList.toggle('active')
     
-
+// SELECT DATA FROM CURRENT USER POKEMON
     var currentPokemon = pokemonDB.filter(function(pokemon){
       return pokemon.name == gameState.userPokemon
     })
-
     player1Img[0].src = currentPokemon[0].img
-    console.log(currentPokemon)
+
+// SELECT DATA FROM CURRENT USER POKEMON 
+    var currentRivalPokemon = pokemonDB.filter(function(pokemon){
+      return pokemon.name == gameState.rivalPokemon
+    })
+    player2Img[0].src = currentRivalPokemon[0].img
   }
   i++
 }
 
-function randomNumber(min, max) {
+var randomNumber = function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function cpuPick() {
+
+var cpuPick = function() {
   gameState.rivalPokemon = pokemonsEl[randomNumber(0, 3)].dataset.pokemon
 }
 
