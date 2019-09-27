@@ -1,3 +1,31 @@
+var pokemons = [
+      {
+        name: 'charmander',
+        type: 'fire',
+        hp:39,
+        attack: 52,
+        defencee: 43,
+        level: 1
+      },
+      {
+        name: 'bulbasaur',
+        type: 'grass',
+        hp: 45,
+        attack: 49,
+        defence: 49,
+        level: 1
+      },
+      {
+        name: 'squirtle',
+        type: 'water',
+        hp: 44,
+        attack: 48,
+        defence: 65,
+        level: 1
+      },
+      
+    ]
+
 var gameState = {
   userPokemon: '',
   rivalPokemon: '' 
