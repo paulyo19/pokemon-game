@@ -38,12 +38,16 @@ var gameState = {
 console.log(gameState)
 
 // ELEMENTS
-var pokemonsEl = document.querySelector('.select-screen').querySelectorAll('.character');
-console.log(pokemonsEl);
+var pokemonsEl = document.querySelector('.select-screen').querySelectorAll('.character')
+console.log(pokemonsEl)
 var battleScreenEl = document.getElementById('battle-screen')
-let i = 0;
+var attackBtnsEl = document.getElementById('battle-screen').querySelectorAll('.attack')
+console.log(attackBtnsEl)
+
+
 
 // THIS IS THE INITIAL LOOP
+var i = 0;
 while (i < pokemonsEl.length){
  // .ADD FUNCTION TO ALL CHARACTERS ON SCREEN SELECT
   pokemonsEl[i].onclick = function(){
@@ -71,8 +75,37 @@ while (i < pokemonsEl.length){
       return pokemon.name == gameState.rivalPokemon
     })
     player2Img[0].src = currentRivalPokemon[0].img
+  // USER CHOOSE ATTACK
+
+
+  // CPU HEALTH GOES DOWN
+
+  // CPU ATTACK
+
+  // USER HEALTH GOES DOWN
+
+
+  // ROCK > SCISSORS
+
+  // PAPER > ROCK
+
+  // SCISSORS > PAPER
+
+  // DEPENDING POKEMON TYPE AND DEFENCE IS HOW HARD THE ATTCAK IS GOING TO BE AND HOW MUCH HEALTH IT WILL TAKE OUT
+
+  // then who evers get health <= 0 loses
   }
   i++
+}
+
+var a = 0
+while (a < attackBtnsEl.length) {
+  attackBtnsEl[a].onclick = function(){
+    var attackName = this.dataset.attack
+    gameState.currentUserAttack = attackName
+    console.log(gameState.currentUserAttack)
+  }
+  a++
 }
 
 var randomNumber = function randomNumber(min, max) {
