@@ -76,8 +76,9 @@ while (i < pokemonsEl.length){
     })
     player2Img[0].src = gameState.currentRivalPokemon[0].img
 
-   
+  // current user and cpu pokemon initail health
     gameState.currentPokemon[0].health = calculateInitialHealth(gameState.currentPokemon)
+    gameState.currentRivalPokemon[0].health = calculateInitialHealth(gameState.currentRivalPokemon)
     console.log(gameState)
   // USER CHOOSE ATTACK
 
@@ -124,10 +125,21 @@ var calculateInitialHealth = function (user){
   return ((0.20 * Math.sqrt(user[0].level)) * user[0].defence) * user[0].hp
 }
 
+var attackMove = function (attack, level, stack, critical, enemy) {
+var attackAmount = ((attack * level) * (stack + critical))/3
+enemy.health = enemy.health - attackAmount
+
+console.log('enemy.health after:' + enemy.health)
+
+}
+
 var play = function(userAttack, cpuAttack){
+  var currentPokemon = gameState.currentPokemon[0]
+  var currentRivalPokemon = gameState.currentPokemon[0]
   switch (userAttack) {
     case 'rock':
       if (cpuAttack == 'paper'){ 
+        attackMove(currentPokemon.attack, currentPokemon.level, .8, .5, currentRivalPokemon)
       console.log('paper beats rock')
       }
 
